@@ -1,0 +1,39 @@
+using System;
+
+namespace _09._Spice_Must_Flow
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int startYield = int.Parse(Console.ReadLine());
+            double days = 0;
+            double amaunt = 0;
+            if (startYield >= 100)
+            {
+                while (startYield >= 100)
+                {
+                    days++;
+                    double dayliAmaunt = startYield - 26;
+                    amaunt += dayliAmaunt;
+                    startYield -= 10;
+
+                }
+
+                amaunt -= 26;
+                Console.WriteLine(days);
+                Console.WriteLine(amaunt);
+            }
+            else
+            {
+                Console.WriteLine(days);
+                Console.WriteLine(amaunt);
+
+            }
+            
+            
+
+
+        }
+    }
+}

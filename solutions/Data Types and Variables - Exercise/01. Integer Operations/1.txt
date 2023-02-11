@@ -1,0 +1,24 @@
+using System;
+
+namespace _01._Integer_Operations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstNumber = int.Parse(Console.ReadLine());
+            int secondNumber = int.Parse(Console.ReadLine()); 
+            int thirdNumber = int.Parse(Console.ReadLine());  
+            int fowrthNumber = int.Parse(Console.ReadLine());
+
+            
+           long firstResult = firstNumber + secondNumber;
+           
+           long secondResult = firstResult / thirdNumber;
+            
+            long thirdResult = secondResult * fowrthNumber;
+
+            Console.WriteLine(thirdResult);
+        }
+    }
+}

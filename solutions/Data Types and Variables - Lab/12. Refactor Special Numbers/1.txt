@@ -1,0 +1,33 @@
+using System;
+
+namespace _12._Refactor_Special_Numbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= num; i++)
+            {
+                   
+                int sumOfDigit = 0;
+                int digit = i;
+                while (digit > 0) 
+                {
+                    sumOfDigit += digit % 10;
+                    digit /= 10;    
+                }
+                if (sumOfDigit ==5 || sumOfDigit==7 || sumOfDigit==11)
+                {
+                    Console.WriteLine($"{i} -> True");
+                }
+                else
+                {
+                    Console.WriteLine($"{i} -> False");
+                }
+
+            }
+        }
+    }
+}
