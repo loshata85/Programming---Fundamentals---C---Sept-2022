@@ -1,0 +1,35 @@
+using System;
+using System.Linq;
+using System.Reflection;
+
+namespace _07._Equal_Arrays
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+             int[] arr1 = Console.ReadLine().Split().Select(int.Parse).ToArray();
+             int[] arr2 = Console.ReadLine().Split().Select(int.Parse).ToArray();
+             int sum = 0;
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                int currentIndex = i;
+                if (arr1[currentIndex] == arr2[currentIndex])
+                {
+                    sum += arr2[currentIndex];
+                }
+                else if (arr1[currentIndex] != arr2[currentIndex])
+                {     
+                    Console.WriteLine($"Arrays are not identical. Found difference at {currentIndex} index");
+                    return;
+                }
+                
+            }
+            Console.WriteLine($"Arrays are identical. Sum: {sum}");
+
+
+            
+            
+        }
+    }
+}
