@@ -1,0 +1,49 @@
+using System;
+using System.Linq;
+
+namespace _07._Max_Sequence_of_Equal_Elements
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int [] numbers = Console.ReadLine()
+                .Split(" ")
+                .Select(int.Parse)
+                .ToArray();
+           int counter = 0; 
+           int winningcnt = 0;      
+           int index = 0;
+            string number = string.Empty;
+
+            for (int i = 0; i < numbers.Length -1; i++)
+            {
+                if (numbers[i] == numbers[i+1])
+                {
+                    counter++;
+                    if (counter > winningcnt)
+                    {
+                        winningcnt = counter;
+                        index= i;
+                        number = numbers[i].ToString();
+
+                    }
+                    
+                }
+                else
+                {
+                    counter = 0;
+                }
+
+            }
+            for (int i = 0; i <= winningcnt; i++)
+            {
+                Console.Write(number + " ");
+            }
+
+
+
+
+        }
+    }
+}

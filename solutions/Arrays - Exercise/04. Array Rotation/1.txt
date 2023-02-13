@@ -1,0 +1,31 @@
+using System;
+using System.Linq;
+
+namespace _04._Array_Rotation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           int[] inputArr = Console.ReadLine()
+                .Split(" ")
+                .Select(int.Parse)
+                .ToArray();  
+            int nRotation = int.Parse(Console.ReadLine());
+            int timeToRotation = nRotation % inputArr.Length;
+            for (int j = 1; j <= nRotation; j++)
+            {
+                int firstEl = inputArr[0];
+                for (int i = 1; i < inputArr.Length; i++)
+                {
+
+                    inputArr[i - 1] = inputArr[i];
+
+                }
+                inputArr[inputArr.Length - 1] = firstEl;
+            }
+            Console.WriteLine(String.Join(" ", inputArr));
+             
+        }
+    }
+}
