@@ -1,0 +1,65 @@
+using System;
+using System.Collections;
+using System.Linq;
+
+namespace _1._Encrypt__Sort__and_Print_Array
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            int numOfStrings = int.Parse(Console.ReadLine());
+            int[] arrSum = new int[numOfStrings];
+            int temp;
+            for (int i = 1; i <= numOfStrings; i++)
+            {
+                string name = Console.ReadLine();
+                char [] chrName = (name).ToCharArray();  // P e t e r
+                int chrSum = 0;
+               
+                for (int j = 0; j < chrName.Length; j++)
+                {
+                     
+                    if (chrName[j] == 'a'||chrName[j]=='o'||chrName[j]=='u'||chrName[j]=='e'||chrName[j]=='i'
+                        || chrName[j] == 'A' || chrName[j] == 'O' || chrName[j] == 'U' || chrName[j] == 'E' || chrName[j] == 'I')
+                    {
+                        int chrValue = Convert.ToInt32(chrName[j]) * chrName.Length;
+                         chrSum += chrValue;    
+                    }
+                    else
+                    {
+                        int chrValue = Convert.ToInt32(chrName[j]) / chrName.Length;
+                        chrSum += chrValue;
+                    }
+                   
+                        arrSum[i-1] = chrSum;
+                    
+                }
+                
+            }
+            for (int i = 0; i <= arrSum.Length - 1; i++)
+            {
+                for (int j = i + 1; j < arrSum.Length; j++)
+                {
+                    if (arrSum[i] > arrSum[j])
+                    {
+                        temp = arrSum[i];
+                        arrSum[i] = arrSum[j];
+                        arrSum[j] = temp;
+                    }
+                }
+            }
+     
+            foreach (var item in arrSum)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadLine();
+
+
+
+
+        }
+    }
+}

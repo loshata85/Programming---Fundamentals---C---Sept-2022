@@ -1,0 +1,40 @@
+using System;
+using System.Linq;
+
+namespace _02._Pascal_Triangle
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+          int lines = int.Parse( Console.ReadLine());
+            long[] aboveArr = new long[lines];
+            long[] crntArr = new long[lines];
+            aboveArr[0] = 1; 
+            Console.WriteLine(aboveArr[0]);
+            for (int r=1; r < lines; r++)
+            {
+
+                for (int c = 0; c <= r; c++)
+                {
+                    if (c == 0)
+                    {
+                        crntArr[c] = 0 + aboveArr[c];  //Empty entries are => "0"
+
+                    }
+                    else
+                    {
+                        crntArr[c] = aboveArr[c - 1] + aboveArr[c];
+                    }
+                    Console.Write(crntArr[c] + " ");
+                }
+                for (int j = 0; j < lines; j++)
+                {
+                    aboveArr[j] = crntArr[j];
+                }
+                Console.WriteLine();
+            }
+
+        }
+    }
+}
