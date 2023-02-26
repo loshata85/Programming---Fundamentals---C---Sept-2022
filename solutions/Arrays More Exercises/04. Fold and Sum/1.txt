@@ -1,0 +1,48 @@
+
+using System;
+using System.Linq;
+using System.Net.WebSockets;
+
+namespace _04._Fold_and_Sum
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int [] inputArr = Console.ReadLine()
+                .Split(" ")
+                .Select(int.Parse)                   // 1 2 3 4 5 6 7 8
+                .ToArray();
+            int k = inputArr.Length / 4;  
+           
+            int[] newArr = new int[2*k];                      
+            int[] foldArr = new int[2*k];
+            int[] sumArr = new int[2*k];
+            int index = 0;
+            for (int i = k; i <=inputArr.Length -1 - k; i++)
+            { 
+               
+                newArr[index] = inputArr[i];    
+                index++;
+            }
+            index = 0;
+            for (int i = k-1; i >= 0 ; i--)
+            {
+                foldArr[index] = inputArr[i];
+                index++;
+            }
+            index= 0;
+            for (int i = inputArr.Length-1; i > (inputArr.Length - 1) - (inputArr.Length / 4); i--)
+            {
+                foldArr[k] = inputArr[i];
+                k++;
+            }
+            for (int i = 0; i < sumArr.Length; i++)
+            {
+                sumArr[i] = newArr[i] + foldArr[i];
+            }
+            Console.WriteLine(String.Join(" ", sumArr));
+            
+        }
+    }
+}
