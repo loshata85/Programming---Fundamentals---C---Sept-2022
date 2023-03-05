@@ -1,0 +1,55 @@
+namespace _10._Multiply_Evens_by_Odds
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            int absValue =Math.Abs(int.Parse(input));
+            int sumOfEvenDigit = GetSumOfEvenDigit(absValue.ToString());
+            int sumOfOddDigit = GetSumOfOddDigit(absValue.ToString());
+            int multipleOfEvenAndOdd = GetMultipleOfEvenAndOdds( sumOfEvenDigit, sumOfOddDigit);
+            Console.WriteLine(multipleOfEvenAndOdd);
+
+
+
+        }
+
+        private static int GetMultipleOfEvenAndOdds(int sumOfEvenDigit, int sumOfOddDigit)
+        {
+            int sum = 0;
+            sum = sumOfEvenDigit * sumOfOddDigit;   
+            return sum; 
+        }
+
+        private static int GetSumOfOddDigit(string input)
+        {
+            int sum = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                int curentNumber = int.Parse(input[i].ToString());
+                if (curentNumber % 2 != 0)
+                {
+                    sum += curentNumber;
+                }
+
+            }
+            return sum;
+        }
+
+        private static int GetSumOfEvenDigit(string input)
+        {
+            int sum = 0;    
+            for (int i = 0; i < input.Length; i++)
+            {
+                int curentNumber = int.Parse(input[i].ToString());
+                if (curentNumber %2 == 0)
+                {
+                    sum += curentNumber;
+                }
+
+            }
+            return sum; 
+        }
+    }
+}

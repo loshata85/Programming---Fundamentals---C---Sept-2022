@@ -1,0 +1,57 @@
+using System.Linq.Expressions;
+
+namespace _05._Orders
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string product = Console.ReadLine();
+            int quantity = int.Parse(Console.ReadLine());
+            double price = 0;
+            double sum = 0;
+
+            //"coffee", "water", "coke", "snacks
+            PrintSum(product, quantity, ref price, ref sum);
+        }
+
+        private static void PrintSum(string product, int quantity, ref double price, ref double sum)
+        {
+            switch (product)
+            {
+                case "coffee":
+                    {
+                        price = 1.50;
+                        sum = quantity * price;
+                        Console.WriteLine($"{sum:F2}");
+
+                        break;
+                    }
+                case "water":
+                    {
+                        price = 1.00;
+                        sum = quantity * price;
+                        Console.WriteLine($"{sum:F2}");
+
+                        break;
+                    }
+                case "coke":
+                    {
+                        price = 1.40;
+                        sum = quantity * price;
+                        Console.WriteLine($"{sum:F2}");
+
+                        break;
+                    }
+                case "snacks":
+                    {
+                        price = 2.00;
+                        sum = quantity * price;
+                        Console.WriteLine($"{sum:F2}");
+
+                        break;
+                    }
+            }
+        }
+    }
+}

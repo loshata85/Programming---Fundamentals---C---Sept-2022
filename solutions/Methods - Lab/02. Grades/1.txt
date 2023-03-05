@@ -1,0 +1,35 @@
+namespace _02._Grades
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double great = double.Parse(Console.ReadLine());
+            Greading(great);
+        }
+        static void Greading(double great) 
+        { 
+         
+            if (great >= 2.00 && great <= 2.99) 
+            {
+                Console.WriteLine("Fail");
+            }
+            else if (great >= 3.00 && great <= 3.49)
+            {
+                Console.WriteLine("Poor");
+            }
+            else if (great >= 3.50 && great <= 4.49)
+            {
+                Console.WriteLine("Good");
+            }
+            else if (great >= 4.50 && great <= 5.49)
+            {
+                Console.WriteLine("Very good");
+            }
+            else if (great >= 5.50 && great <= 6.00)
+            {
+                Console.WriteLine("Excellent");
+            }
+        }
+    }
+}

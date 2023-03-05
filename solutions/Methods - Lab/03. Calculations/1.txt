@@ -1,0 +1,51 @@
+namespace _03._Calculations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string comand = Console.ReadLine();
+            double number1 = double.Parse(Console.ReadLine());
+            double number2 = double.Parse(Console.ReadLine());
+
+            PrintResult(comand, number1,  number2);
+        }
+        //"add", "multiply", "subtract", "divide"
+        static void PrintResult(string comand, double number1, double number2)   
+        { 
+            double sum = 0; 
+            switch (comand)           
+            {
+                case "add":
+                    {
+                        sum = number1 + number2;
+                        Console.WriteLine(sum);
+                    }
+                    break;
+                case "multiply":
+                    {
+                        sum= number1 * number2;
+                        Console.WriteLine(sum); 
+                    }
+                    break;
+                case "subtract":
+                    {
+                        sum= number1 - number2;
+                        Console.WriteLine(sum); 
+                    }
+                    break;
+                case "divide":
+                    {
+                        sum= number1 / number2;
+                        Console.WriteLine(sum); 
+                    }
+                    break;
+
+
+            }
+        
+        
+        }
+
+    }
+}
