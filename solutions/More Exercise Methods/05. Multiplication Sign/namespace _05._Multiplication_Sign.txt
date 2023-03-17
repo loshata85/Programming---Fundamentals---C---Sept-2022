@@ -1,0 +1,42 @@
+namespace _05._Multiplication_Sign
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           int negativeCounter = 0; 
+           bool isZero = false;
+
+            for (int i = 1; i <=3; i++)
+            {
+                int currentNumber = int.Parse(Console.ReadLine());
+                if (currentNumber < 0)
+                {
+                    negativeCounter++;
+                }
+                if (currentNumber == 0)
+                {
+                    isZero = true;
+                }
+            }
+
+            PrintResult(negativeCounter, isZero);
+        }
+
+        private static void PrintResult(int negativeCounter, bool isZero)
+        {
+            if (isZero)
+            {
+                Console.WriteLine("zero");
+            }
+            else if (negativeCounter % 2 != 0)
+            {
+                Console.WriteLine("negative");
+            }
+            else
+            {
+                Console.WriteLine("positive");
+            }
+        }
+    }
+}

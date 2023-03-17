@@ -1,0 +1,28 @@
+namespace _02._Vowels_Count
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            int vowel = GetVowelsNumber(input);
+            Console.WriteLine(vowel);   
+        }
+
+        private static int GetVowelsNumber(string input)
+        {
+            char[] characters = input.ToCharArray();
+            int count = 0;
+            for (int i = 0; i<characters.Length; i++)
+            {
+                char crntChar = characters[i];
+                if (crntChar == 'a' || crntChar == 'e' || crntChar == 'i' || crntChar == 'o' || crntChar == 'u' ||
+                    crntChar == 'A' || crntChar == 'E' || crntChar == 'I' || crntChar == 'O' || crntChar == 'U')
+                {
+                    count++;    
+                }
+            }
+            return count;   
+        }
+    }
+}

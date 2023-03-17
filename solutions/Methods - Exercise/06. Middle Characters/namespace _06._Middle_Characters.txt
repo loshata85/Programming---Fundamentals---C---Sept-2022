@@ -1,0 +1,32 @@
+namespace _06._Middle_Characters
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            PrintMiddleChar(input);
+
+        }
+        static void PrintMiddleChar(string input)
+        {
+            char[] chr = new char[input.Length];
+            chr = input.ToCharArray();
+            char middlechr = chr[(input.Length-1)/2];
+            char middlechr2 = chr[((input.Length-1) / 2) +1];
+           
+            if (input.Length%2 !=0)
+            {
+             
+                Console.WriteLine(middlechr);
+            }
+            else
+            {
+                Console.WriteLine($"{middlechr}{middlechr2}");    
+            }
+
+        }
+
+    }
+}

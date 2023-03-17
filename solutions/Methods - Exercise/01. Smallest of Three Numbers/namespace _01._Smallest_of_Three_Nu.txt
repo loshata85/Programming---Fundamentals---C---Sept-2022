@@ -1,0 +1,32 @@
+namespace _01._Smallest_of_Three_Numbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           int a = int.Parse(Console.ReadLine());
+           int b = int.Parse(Console.ReadLine());   
+           int c = int.Parse(Console.ReadLine());   
+            int smallestNumber = GetSmallestNumber(a,b,c);
+            Console.WriteLine(smallestNumber);  
+        }
+
+        private static int GetSmallestNumber(int a, int b, int c)
+        {
+            int smallestNumber = 0;
+            if (a<=b && a<=c  )                 
+            {
+                smallestNumber = a;
+            }
+            else if (b<=c && b<=a) 
+            { 
+                smallestNumber= b;
+            }
+            else if (c<=a && c<=b)
+            {
+                smallestNumber= c;  
+            }
+            return smallestNumber;  
+        }
+    }
+}

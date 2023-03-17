@@ -1,0 +1,57 @@
+namespace _10._Top_Number
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            PrintTopNumber(n);
+        }
+        private static void PrintTopNumber(int n)
+
+        {
+            for (int i = 1; i <= n; i++)
+            {
+               if (DigitsSumDevisibleBy8(i) && HoldOddDigit(i))
+               {
+                    Console.WriteLine(i);
+               }
+            }
+        }
+        private static bool HoldOddDigit(int n)
+        {
+                while (n != 0)
+                {
+                    int lastDigit = n % 10;
+                   
+                    if (lastDigit % 2 == 1)
+                    {
+                        return true;
+
+                    }
+                    n /= 10;
+                }
+            
+            return false;   
+        }
+
+        private static bool DigitsSumDevisibleBy8(int n)
+        {
+            int sum = 0;            
+             while (n>0)
+             {
+                sum += n % 10;
+                n /= 10;    
+
+             }       
+            if (sum % 8 ==0)
+            {
+                return true;
+
+            }
+           
+            return false;    
+        }
+    }
+}

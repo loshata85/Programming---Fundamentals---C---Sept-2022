@@ -1,0 +1,27 @@
+namespace _05._Add_and_Subtract
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());  
+            int c = int.Parse(Console.ReadLine());  
+            int sumResult = GetSum(a,b);
+            int subtractResult = GetSubtract(sumResult, c);
+            Console.WriteLine(subtractResult);
+        }
+
+        private static int GetSubtract(int sumResult, int c)
+        {
+            int result = sumResult - c;
+            return result;
+        }
+
+        private static int GetSum(int a, int b)
+        {
+            int sum = a + b;
+            return sum; 
+        }
+    }
+}

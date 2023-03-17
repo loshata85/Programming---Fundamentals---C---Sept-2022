@@ -1,0 +1,49 @@
+ namespace _08._Factorial_Division
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           int a = int.Parse(Console.ReadLine());
+           int b = int.Parse(Console.ReadLine());
+
+            double factorielA = CalculateFactorialA(a);
+            double factorialB = CalculateFactorialB(b); 
+
+            double result = factorielA / factorialB;
+
+            Console.WriteLine($"{result:F2}");
+
+
+        }
+
+        private static double CalculateFactorialA(int a)
+        {
+            double aFactorial = 1;
+            if (a == 0)
+            {
+                return 1;
+            }
+             
+            for (int i = 1; i <=a; i++)
+            {
+                aFactorial *= i;
+            }
+            return aFactorial;      
+        }
+        private static double CalculateFactorialB(int b)
+        {
+            double bFactorial = 1;
+
+            if (b == 0)
+            {
+                return 1;   
+            }
+            for (int i = 1; i <= b; i++)
+            {
+                bFactorial *= i;
+            }
+            return bFactorial;
+        }
+    }
+}

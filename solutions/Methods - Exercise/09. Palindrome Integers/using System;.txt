@@ -1,0 +1,41 @@
+using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+namespace _09._Palindrome_Integers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            PrintIsPalindrome();
+        }
+
+        private static void PrintIsPalindrome()
+        {
+            string reversing = String.Empty;
+            while (true)
+            {
+              string input = Console.ReadLine();
+                if (input == "END") 
+                {
+                    break;
+                }
+                for (int i = input.Length-1; i >=0; i--)
+                {
+                    reversing += input[i];
+                }
+                if (reversing == input)
+                {
+                    Console.WriteLine("true");
+                }
+                else
+                {
+                    Console.WriteLine("false");
+                }
+                reversing = String.Empty;
+            }
+             
+        }
+    }
+}
