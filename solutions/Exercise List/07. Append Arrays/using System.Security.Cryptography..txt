@@ -1,0 +1,25 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace _07._Append_Arrays
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           List<string> input = Console.ReadLine()         
+                .Split("|",StringSplitOptions.TrimEntries)
+                .Reverse()
+                .ToList();
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                List<string> output = input[i].Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                for (int j = 0; j < output.Count; j++)
+                {
+                    Console.Write($"{output[j]} ");
+                }
+            }
+        }
+    }
+}

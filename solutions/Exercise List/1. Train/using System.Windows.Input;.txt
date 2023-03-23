@@ -1,0 +1,55 @@
+using System.Windows.Input;
+
+namespace _01._Messaging
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numPassangers = Console.ReadLine()
+                .Split(' ')
+                .Select(int.Parse)
+                .ToList();  
+            int maxCapacity = int.Parse(Console.ReadLine());
+
+            string comand = string.Empty;
+
+            while (comand != "end")
+            {
+                 comand = Console.ReadLine();
+                string[] comandArray = comand.Split(' ');
+
+                if (comandArray[0] == "end")
+                {
+                    break;
+                }
+                
+                if (comandArray[0] == "Add")
+                {
+                    int number = int.Parse(comandArray[1]);
+                    numPassangers.Add(number);
+                }
+                else
+                {
+                    int number = int.Parse(comandArray[0]);
+
+                    for (int i = 0; i < numPassangers.Count; i++)
+                    {
+                        if (maxCapacity >= numPassangers[i] + number )
+
+                        {
+                            numPassangers[i] += number;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(string.Join(" ", numPassangers));
+        }
+       
+    }
+}

@@ -1,0 +1,121 @@
+namespace _07._List_Manipulation_Advanced
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+
+            string comand = string.Empty;
+            bool isChecked = false; 
+            while (comand != "end")
+            {
+                comand = Console.ReadLine();
+                string[] cmdArray = comand.Split();
+                
+
+                switch (cmdArray[0])
+                {
+                    case "Add":
+                        {
+                            isChecked = true;   
+                            int number = int.Parse(cmdArray[1]);
+                            numbers.Add(number);
+                            break;
+                        }
+                    case "Remove":
+                        {
+                            isChecked = true;
+                            int number = int.Parse(cmdArray[1]);
+                            numbers.Remove(number);
+                            break;
+                        }
+                    case "RemoveAt":
+                        {
+                            isChecked = true;
+                            int index = int.Parse(cmdArray[1]);
+                            numbers.RemoveAt(index);
+                            break;
+                        }
+                    case "Insert":
+                        {
+                            isChecked = true;
+                            int number = int.Parse(cmdArray[1]);
+                            int index = int.Parse(cmdArray[2]);
+
+                            numbers.Insert(index, number);
+                            break;
+                        }
+                    case "Contains":
+                        {
+                            int number = int.Parse(cmdArray[1]);
+                           
+                                if (numbers.Contains(number))
+                                {
+                                    Console.WriteLine("Yes");
+                                   
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No such number");
+                                    
+                                }                 
+                            
+                            break;
+                        }
+                    case "PrintEven":
+                        {
+                            Console.WriteLine(string.Join(" ", numbers.Where(x => x % 2 ==0)));
+                            break;
+                        }
+                    case "PrintOdd":
+                        {
+                            Console.WriteLine(string.Join(" ", numbers.Where(x => x % 2 != 0)));
+                            break;
+                        }
+                    case "GetSum":
+                        {
+                            int sum = 0;
+                            for (int i = 0; i < numbers.Count; i++)
+                            {
+                                sum += numbers[i];
+                            }
+                            Console.WriteLine(sum);
+
+                            break;
+                        }
+                    case "Filter":
+                        {
+                           string condition = cmdArray[1];
+                            int number = int.Parse(cmdArray[2]);
+                            if (condition == "<")
+                            {
+                                Console.WriteLine(string.Join(" ", numbers.Where(x=> x<number)));
+                            }
+                            else if (condition == ">") 
+                            {
+                                Console.WriteLine(string.Join(" ", numbers.Where(x => x > number)));
+                            }
+                            else if (condition =="<=")
+                            {
+                                Console.WriteLine(string.Join(" ", numbers.Where(x => x <= number)));
+                            }
+                            else if (condition == ">=")
+                            {
+                                Console.WriteLine(string.Join(" ", numbers.Where(x => x >= number)));
+                            }
+                            break;
+                        }
+
+                }
+            }
+            if (isChecked)
+            {
+                Console.WriteLine(string.Join(" ", numbers));
+            }
+        }
+    }
+}

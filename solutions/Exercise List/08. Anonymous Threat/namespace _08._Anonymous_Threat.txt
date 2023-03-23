@@ -1,0 +1,83 @@
+namespace _08._Anonymous_Threat
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> inputLine = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
+
+
+            string comand = string.Empty;
+
+            while (comand != "3:1") 
+            {
+                string[] cmndArg= Console.ReadLine()
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray();
+                comand = cmndArg[0];
+                if (comand=="merge")
+                {
+                    int startIndex = int.Parse(cmndArg[1]);
+                    int endIndex = int.Parse(cmndArg[2]);
+                    if (startIndex<0)
+                    {
+                        startIndex = 0;
+                    }
+                    if (startIndex>= inputLine.Count)
+                    { 
+                        startIndex = inputLine.Count -1;   
+                    }
+                    if (endIndex <= 0)
+                    {
+                       endIndex = 0;
+                    }
+                    if (endIndex >= inputLine.Count)
+                    {
+                        endIndex = inputLine.Count - 1;
+                    }
+
+                    string mergeText = string.Empty;
+                    for (int i = startIndex; i <= endIndex; i++)
+                    {
+                        string currentText = inputLine[startIndex];
+                        mergeText += currentText;
+                        inputLine.RemoveAt(startIndex);
+                    }
+                    inputLine.Insert(startIndex, mergeText);    
+                }
+                else if (comand == "divide")
+                {
+                    int index = int.Parse(cmndArg[1]);  
+                    int partitions = int.Parse(cmndArg[2]);
+                    string word = inputLine[index]; 
+                    int substringsLenght = word.Length/partitions;
+                    int lastSubsLenght = word.Length - ((partitions - 1) * substringsLenght);
+
+                    List<string> partitionsList = new List<string>();
+
+                    for (int i = 0; i < partitions; i++)
+                    {
+                        int desiredLenght = substringsLenght;
+
+                        if(i == partitions -1)
+                        {
+                            desiredLenght = lastSubsLenght;
+                        }
+                        char [] newPartitionArr = word
+                            .Skip(i * substringsLenght)
+                            .Take(desiredLenght)
+                            .ToArray();
+                        string newPartition = string.Join("", newPartitionArr);
+                        partitionsList.Add(newPartition);
+                    }
+
+                    inputLine.RemoveAt(index);
+                    inputLine.InsertRange(index, partitionsList);
+                }
+            }
+            Console.WriteLine(string.Join(" ", inputLine));
+        }
+    }
+}

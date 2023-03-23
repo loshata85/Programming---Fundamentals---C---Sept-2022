@@ -1,0 +1,86 @@
+namespace _04._List_Operations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> inputNumbers = Console.ReadLine()
+                .Split(" ")
+                .Select(int.Parse)
+                .ToList();
+            string comand = string.Empty;
+            while (comand != "End") 
+            { 
+               
+                string[] cmdArg = Console.ReadLine()
+                    .Split(" ");
+
+                comand = cmdArg[0];
+
+                if (comand == "Add")
+                {
+                    int number = int.Parse(cmdArg[1]);
+                    inputNumbers.Add(number);   
+                }
+                else if (comand == "Insert")
+                {
+                    int number = int.Parse(cmdArg[1]);
+                    int index = int.Parse(cmdArg[2]);
+
+                    if (index >=0 && index <inputNumbers.Count)
+                    {
+                        inputNumbers.Insert(index, number);
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid index");
+                    }
+                  
+                }
+                else if (comand == "Remove")
+                {
+                    int index = int.Parse(cmdArg[1]);
+                    if (index >= 0 && index <= inputNumbers.Count)
+                    {
+                        inputNumbers.RemoveAt(index);   
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid index");
+                    }
+
+                }
+                else if (comand == "Shift")
+                {
+                    int count = int.Parse(cmdArg[2]);
+                    string direction = cmdArg[1];
+                    if (direction == "left")
+                    {
+                        while (count!=0)
+                        {
+                            int currentNumber = inputNumbers[0];
+                            inputNumbers.RemoveAt(0);
+                            inputNumbers.Add(currentNumber);
+                            count--;
+                        }
+                                                               
+                    }
+                    else if (direction == "right")
+                    {
+                        while (count != 0)
+                        {
+                            int currentNumber = inputNumbers[inputNumbers.Count-1];
+                            inputNumbers.RemoveAt(inputNumbers.Count - 1);
+                            inputNumbers.Insert(0,currentNumber);
+                            count--;    
+                        }
+                    }
+                }
+
+            }
+            Console.WriteLine(string.Join(" ", inputNumbers));
+
+        }
+    }
+}
