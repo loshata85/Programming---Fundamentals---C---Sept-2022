@@ -1,0 +1,45 @@
+namespace _05._Drum_Set
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           float saving = float.Parse(Console.ReadLine());
+            List<int> drumSet = Console.ReadLine()
+                .Split(" ")
+                .Select(int.Parse)
+                .ToList();
+            string power = Console.ReadLine();
+            List<int> crntDrumSet = new List<int>(drumSet);
+            while (power != "Hit it again, Gabsy!")
+            {
+                
+                int powerNum = int.Parse(power);
+                for (int i = 0; i < crntDrumSet.Count; i++)
+                {
+
+                    crntDrumSet[i] -= powerNum;
+                    if (crntDrumSet[i]<=0)
+                    {
+                        if (saving > drumSet[i] * 3)
+                        {
+                            crntDrumSet[i] = drumSet[i];
+                            saving -= drumSet[i] * 3;   
+                        }
+                        else
+                        {  drumSet.Remove(drumSet[i]);
+                           crntDrumSet.Remove(crntDrumSet[i]);
+                            i--;
+                        }
+                    }
+                }
+               
+                power= Console.ReadLine();
+            }
+            drumSet = crntDrumSet;
+
+            Console.WriteLine(string.Join(" ", drumSet));
+            Console.WriteLine($"Gabsy has {saving:F2}lv.");
+        }
+    }
+}

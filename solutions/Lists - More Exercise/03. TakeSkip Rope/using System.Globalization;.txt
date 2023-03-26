@@ -1,0 +1,60 @@
+using System.Globalization;
+using System.Text;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace _03._TakeSkip_Rope
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string word = Console.ReadLine();
+            List<int> numbers = new List<int>();
+            List<int> takeList = new List<int>();
+            List<int> skipList = new List<int>();
+            List<string> nonNumbers = new List<string>();
+            string result = string.Empty;
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (char.IsDigit((word[i])))
+                {
+                    numbers.Add(int.Parse(word[i].ToString()));
+                }
+                else
+                {
+                    nonNumbers.Add(word[i].ToString());
+                }
+            }
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    takeList.Add(numbers[i]);
+                }
+                else
+                {
+                    skipList.Add(numbers[i]);
+                }
+            }
+            int index = 0;
+            for (int i = 0; i < takeList.Count; i++)
+            {
+                int take = takeList[i];
+                int skipe = skipList[i];
+
+                if (index + take > nonNumbers.Count)
+                {
+                    take = nonNumbers.Count - index;
+                }
+
+                for (int j = 0; j < take; j++)
+                {
+                    result += nonNumbers[index + j];
+                }
+
+                index += take + skipe;
+            }
+            Console.WriteLine(result);
+        }
+    }
+}

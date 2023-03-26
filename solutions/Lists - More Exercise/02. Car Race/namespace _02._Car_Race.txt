@@ -1,0 +1,47 @@
+namespace _02._Car_Race
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = Console.ReadLine()
+                  .Split(" ")
+                  .Select(int.Parse)
+                  .ToArray();
+            int middleIndex = array.Length / 2;
+            float leftSum = 0;
+            float rightSum = 0;
+            for (int i = 0; i < middleIndex; i++)
+            {
+                if (array[i]==0)
+                {
+                    leftSum *= 0.8f;
+                }
+                else 
+                { 
+                   leftSum+= array[i];
+                }
+            }
+            for (int j = array.Length -1; j > middleIndex; j--)
+            {
+                if (array[j]==0)
+                {
+                    rightSum *= 0.8f;
+
+                }
+                else
+                {
+                     rightSum+= array[j];   
+                } 
+            }
+            if (leftSum < rightSum)
+            {
+                Console.WriteLine($"The winner is left with total time: {leftSum}");
+            }
+            else
+            {
+                Console.WriteLine($"The winner is right with total time: {rightSum}");
+            }
+        }
+    }
+}
