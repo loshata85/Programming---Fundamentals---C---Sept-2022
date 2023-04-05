@@ -1,0 +1,124 @@
+using System.Drawing;
+using System.Reflection;
+using System.Windows.Input;
+
+namespace _06._Vehicle_Catalogue
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            List<Vehicle> vehicles= new List<Vehicle>();
+
+            InitializeVehicle(vehicles);
+            PrintVehicleInformation(vehicles);
+            AverageHorsePower(vehicles);
+
+        }
+        static void AverageHorsePower(List<Vehicle> vehicles)
+        {
+            double truckHorsePowerCounter = 0;
+            double carHorsePowerCounter =0; 
+            int truckCounter = 0;
+            int carCounter = 0; 
+            List<Vehicle> onlyCars= new List<Vehicle>();
+            List<Vehicle> onlyTrucks = new List<Vehicle>();   
+            foreach (Vehicle vehicle in vehicles.Where(v => v.Type == "car"))
+            {
+
+                carHorsePowerCounter += vehicle.HorsePower;
+                carCounter++;
+                onlyCars.Add(vehicle);
+            }
+            if (onlyCars.Count > 0)
+            {
+                double carAverageHP = carHorsePowerCounter / carCounter;
+                Console.WriteLine($" Cars have average horsepower of: {carAverageHP:F2}.");
+            }
+            else
+            {
+                Console.WriteLine($" Cars have average horsepower of: 0.00.");
+            }
+            
+
+            foreach (Vehicle vehicle in vehicles.Where(v => v.Type=="truck"))
+            {
+                 truckHorsePowerCounter+= vehicle.HorsePower;
+                truckCounter++;
+                onlyTrucks.Add(vehicle);
+            }
+            if (onlyTrucks.Count >0)
+            {
+                double truckAverageHP = truckHorsePowerCounter / truckCounter;
+                Console.WriteLine($" Trucks have average horsepower of: {truckAverageHP:F2}.");
+            }
+            else
+            {
+                Console.WriteLine($" Trucks have average horsepower of: 0.00.");
+            }
+           
+
+        }
+        static void PrintVehicleInformation(List<Vehicle> vehicles)
+        {
+
+            string input;
+            while ((input = Console.ReadLine()) != "Close the Catalogue")
+            {
+                string model = input;
+               foreach (Vehicle vehicle in vehicles.Where(v => v.Model == model))
+               {
+                    if ( vehicle.Type == "car")
+                    {
+                        Console.WriteLine($"Type: Car");
+                        Console.WriteLine($"Model: {vehicle.Model}");
+                        Console.WriteLine($"Color: {vehicle.Color}");
+                        Console.WriteLine($"Horsepower: {vehicle.HorsePower}");
+                    }
+                    else if (vehicle.Type == "truck")
+                    {
+                        Console.WriteLine($"Type: Truck");
+                        Console.WriteLine($"Model: {vehicle.Model}");
+                        Console.WriteLine($"Color: {vehicle.Color}");
+                        Console.WriteLine($"Horsepower: {vehicle.HorsePower}");
+                    }
+                              
+               }
+            }
+
+        }
+
+        static void InitializeVehicle (List<Vehicle>vehicles)
+        {
+            string comand;
+            while ((comand = Console.ReadLine()) != "End")
+            {
+                string[] input = comand.Split(" ");
+                string typeOfVehicle = input[0];
+                string model = input[1];
+                string color = input[2];
+                int horsePower = int.Parse(input[3]);
+                Vehicle vehicle = new Vehicle(typeOfVehicle, model, color, horsePower);
+                vehicles.Add(vehicle);
+            }
+        }
+    }
+    public class Vehicle
+    {
+        public Vehicle(string typeOfVehicle, string model, string color, int horsePower)
+        {
+            Type = typeOfVehicle;
+            Model = model;
+            Color = color;
+            HorsePower = horsePower;
+        }
+
+        public string Type { get; set; }
+        public string Model { get; set; }
+        public string Color { get; set; }
+        public int HorsePower { get; set; }
+
+
+    }
+}

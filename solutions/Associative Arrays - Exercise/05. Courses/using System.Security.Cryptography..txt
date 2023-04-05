@@ -1,0 +1,43 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace _05._Courses
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+           Dictionary<string,List<string>> coursesInfo = 
+                new Dictionary<string,List<string>>();
+   
+            string comand;
+
+            while ((comand = Console.ReadLine()) != "end")
+            {
+                string[] input = comand.Split(" : ", StringSplitOptions.RemoveEmptyEntries);
+
+                string courseName = input[0];   
+                string studentName = input[1];
+
+                if (!coursesInfo.ContainsKey(courseName))
+                {
+                    coursesInfo[courseName] = new List<string>(); 
+
+                }
+                coursesInfo[courseName].Add(studentName);             
+
+            }
+
+            foreach (var cvp in coursesInfo)
+            {
+                string courseName = cvp.Key;
+                List<string> students= cvp.Value;
+                Console.WriteLine($"{courseName}: {students.Count}");
+                foreach (var student in students)
+                {
+                    Console.WriteLine($"-- {student}");
+                }
+            }
+        }
+    }
+}

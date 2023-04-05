@@ -1,0 +1,49 @@
+namespace _04._SoftUni_Parking
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<string , string> parkingList = new Dictionary<string, string>();    
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine()
+                    .Split();
+                string  comand = input[0];  
+                string name = input[1]; 
+               
+                if (comand == "register")
+                {
+                    string plateNumber = input[2];
+                    if (parkingList.ContainsKey(name))
+                    {
+                        Console.WriteLine($"ERROR: already registered with plate number {parkingList[name]}");
+                    }
+                    else
+                    {
+                     parkingList.Add(name,plateNumber);
+                        Console.WriteLine($"{name} registered {plateNumber} successfully");
+                    }
+                }
+                else if(comand == "unregister")
+                {
+                    if (!parkingList.ContainsKey(name))
+                    {
+                        Console.WriteLine($"ERROR: user {name} not found");
+                    }
+                    else
+                    {
+                        parkingList.Remove(name);
+                        Console.WriteLine($"{name} unregistered successfully");
+                    }
+                }
+            }
+
+            foreach (var npp in parkingList)
+            {
+                Console.WriteLine($"{npp.Key} => {npp.Value}");
+            }
+        }
+    }
+}

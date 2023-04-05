@@ -1,0 +1,40 @@
+namespace _01._Count_Chars_in_a_String_2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+
+            char[] characters = text.ToCharArray();
+            Dictionary<char,int> chars = new Dictionary<char, int>();
+            List<char> chars1 = new List<char>();
+            for (int i = 0; i < characters.Length; i++)
+            {
+
+                if (characters[i] == ' ')
+                {
+                    continue;
+                }
+                if (!chars.ContainsKey(characters[i]))
+                {
+                    chars.Add(characters[i], 1);
+                    chars1.Add(characters[i]);
+                }
+                else
+                {
+                    chars[characters[i]]++;
+                }
+            }
+            foreach (char c in chars1)
+            {
+                if (chars.ContainsKey(c))
+                {
+                    
+                    Console.WriteLine($"{c} -> {chars[c]}");
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,44 @@
+namespace _03._Orders
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, double> totalPrice = new Dictionary<string, double>();
+            Dictionary<string, int> totalQuantity = new Dictionary<string, int>();
+            string[] input = Console.ReadLine()
+                   .Split();
+            string product = input[0];
+            while ( product!= "buy")
+            {
+
+                if (totalPrice.ContainsKey(product))
+                {
+                    double price = double.Parse(input[1]);
+                    int quantity = int.Parse(input[2]);
+                    totalPrice[product] = price;
+                    totalQuantity[product] += quantity;
+                }
+
+                else
+                {
+                    double price = double.Parse(input[1]);
+                    int quantity = int.Parse(input[2]);
+
+                    totalQuantity.Add(product, quantity);
+                    totalPrice.Add(product, price);
+                }
+                input = Console.ReadLine().Split();
+                product = input[0];
+            }
+            foreach (var p in totalQuantity)
+            {
+                string Product = p.Key;
+                int quantity = p.Value;
+                double price = totalPrice[Product];
+                double results = quantity * price;
+                Console.WriteLine($"{Product} -> {results:f2}");
+            }
+        }
+    }
+}
