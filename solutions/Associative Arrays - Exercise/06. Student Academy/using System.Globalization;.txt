@@ -1,0 +1,42 @@
+using System.Globalization;
+
+namespace _06._Student_Academy
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            Dictionary<string,List<double>> studentInfo =
+                new Dictionary<string,List<double>>();
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                string name = Console.ReadLine();   
+                double grade = double.Parse(Console.ReadLine());
+
+                if (!studentInfo.ContainsKey(name))
+                {
+                    studentInfo[name] = new List<double>();
+                }
+                studentInfo[name].Add(grade);
+            }
+            foreach (var sgp in studentInfo)
+            {
+                double averageGrade = sgp.Value.Average();
+
+                if (averageGrade < 4.50)
+                {
+                    string key = sgp.Key;
+                    studentInfo.Remove(key);
+                }
+            }
+            foreach (var sgp in studentInfo)
+            {
+                double averageGrade = sgp.Value.Average();
+                string name = sgp.Key;
+                Console.WriteLine($"{name} -> {averageGrade:F2}");
+            }
+        }
+    }
+}

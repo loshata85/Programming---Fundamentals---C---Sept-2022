@@ -1,0 +1,39 @@
+namespace _07._Company_Users
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string,List<string>> companyInfo = 
+                new Dictionary<string,List<string>>();
+
+            string comand;
+            while ((comand = Console.ReadLine()) != "End" )
+            {
+                string[] cmdArg = comand.Split(" -> ");
+                string companyName = cmdArg[0]; 
+                string employeeId = cmdArg[1];
+
+                if (!companyInfo.ContainsKey(companyName))
+                {
+                    companyInfo[companyName] = new List<string>();
+                }
+                if (!companyInfo[companyName].Contains(employeeId))
+                {
+                    companyInfo[companyName].Add(employeeId);
+                }
+               
+            }
+            foreach (var cep in companyInfo)
+            {
+                string companyName = cep.Key;
+                List<string> employeeId = cep.Value;
+                Console.WriteLine(cep.Key);
+                foreach (var employee in employeeId )
+                {
+                    Console.WriteLine($"-- {employee}");
+                }
+            }
+        }
+    }
+}

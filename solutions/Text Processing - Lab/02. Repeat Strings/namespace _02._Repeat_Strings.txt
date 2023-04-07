@@ -1,0 +1,21 @@
+namespace _02._Repeat_Strings
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            string newString= string.Empty;
+
+            foreach (var item in input)
+            {
+                for (int i = 0; i < item.Length; i++)
+                {
+                    newString += item;
+                }
+            }
+            Console.WriteLine(newString);  
+        }
+        
+    }
+}

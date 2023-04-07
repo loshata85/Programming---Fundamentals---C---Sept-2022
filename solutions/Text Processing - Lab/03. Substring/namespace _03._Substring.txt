@@ -1,0 +1,20 @@
+namespace _03._Substring
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string specialWord = Console.ReadLine();
+            string text = Console.ReadLine();
+
+            int index = text.IndexOf(specialWord);
+
+           while (text.Contains(specialWord))
+           {
+            text = text.Remove(text.IndexOf(specialWord), specialWord.Length);
+            
+           }
+            Console.WriteLine(text);
+        }
+    }
+}

@@ -1,0 +1,18 @@
+using System.Net.WebSockets;
+
+namespace _01.Reverse_string_1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string word = null;
+            while ((word = Console.ReadLine()) != "end")
+            {
+                var reversedWord = word.ToArray().Reverse();
+
+                Console.WriteLine($"{word} = {string.Join("",reversedWord)}");
+            }
+        }
+    }
+}
