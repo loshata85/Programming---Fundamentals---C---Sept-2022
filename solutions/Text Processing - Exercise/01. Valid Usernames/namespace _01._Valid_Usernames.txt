@@ -1,0 +1,40 @@
+namespace _01._Valid_Usernames
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] inputUsersName = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries);
+            //sh, too_long_username, !lleg@l ch@rs, jeffbutt
+            foreach (var userName in inputUsersName)
+            {
+                string newUserName = string.Empty;
+                if ((userName.Length >= 3) && (userName.Length <= 16))
+                {
+                    foreach (var char1 in userName)
+                    {
+
+                        if ((int)char1 == 45 || (int)char1 == 95 || ((int)char1 >= 48 && (int)char1 <= 57) ||
+                            ((int)char1 >= 65 && (int)char1 <= 90) || ((int)char1 >= 97 && (int)char1 <= 122))
+                        {
+                            newUserName += char1;
+                        }
+                    }
+                    if (newUserName == userName)
+                    {
+                        Console.WriteLine(string.Join("", newUserName));
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    continue;
+                }
+               
+            }
+        }
+    }
+}

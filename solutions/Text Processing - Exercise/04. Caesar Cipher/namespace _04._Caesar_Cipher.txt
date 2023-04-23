@@ -1,0 +1,20 @@
+namespace _04._Caesar_Cipher
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string newString = string.Empty;
+            foreach (var currentChar in input)
+            {
+              int newChar = ((int)currentChar) + 3;
+
+
+                newString += (char)newChar;
+            }
+            newString= newString.ToString();
+            Console.WriteLine(String.Join("", newString));
+        }
+    }
+}

@@ -1,0 +1,41 @@
+using System.Text.RegularExpressions;
+
+namespace _01._Furniture
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string pattern = @"^>>(?<furnitureName>[A-Za-z]+)<<(?<price>\d+(\.\d+){0,1})!(?<quantity>\d+)(\.\d+){0,1}$";
+            string input;
+            double sum = 0;
+            List<string> furniture = new List<string>();
+            
+
+            while ((input= Console.ReadLine()) != "Purchase") 
+            {
+                Match match = Regex.Match(input,pattern);
+
+                if (match.Success)
+                { 
+                    string furnitureName = match.Groups["furnitureName"].Value;
+                    double price = double.Parse( match.Groups["price"].Value);
+                    double quantity = double.Parse(match.Groups["quantity"].Value);
+
+                    sum += price * quantity; 
+                    furniture.Add(furnitureName);
+                   
+                }
+            }
+            Console.WriteLine("Bought furniture:");
+            for (int i = 0; i <furniture.Count; i++)
+            {
+                Console.WriteLine($"{furniture[i]}");
+            }
+            Console.WriteLine($"Total money spend: {sum:f2}");
+           
+           
+
+        }
+    }
+}

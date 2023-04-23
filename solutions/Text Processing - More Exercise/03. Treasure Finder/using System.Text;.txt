@@ -1,0 +1,56 @@
+using System.Text;
+
+namespace _03._Treasure_Finder
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] key = Console.ReadLine()
+                 .Split()
+                 .Select(int.Parse)
+                 .ToArray();
+
+            string input = Console.ReadLine();
+            StringBuilder sb = new StringBuilder();
+            while (input != "find")
+            {
+
+                char[] charInput = input.ToCharArray();
+                int keyL = 0;
+                for (int i = 0; i < charInput.Length; i++)
+                {
+                    charInput[i] = Convert.ToChar(charInput[i] - key[keyL]);
+                    keyL++;
+                    sb.Append(charInput[i]);
+                    if (keyL == key.Length)
+                    {
+                        keyL = 0;
+                    }
+
+                }
+                string ouput = sb.ToString();
+                int startTresureIndex = ouput.IndexOf('&');
+                int endTresureIndex = ouput.IndexOf('&', ouput.IndexOf('&') + 1);
+                string nameTresure = string.Empty;
+                for (int i = startTresureIndex +1; i < endTresureIndex; i++)
+                {
+                    nameTresure += ouput[i];
+                }
+                
+                int strartPlaceIndex = ouput.IndexOf('<');
+                int endPlaceIndex = ouput.IndexOf('>');
+                string place = string.Empty;
+
+                for (int i = strartPlaceIndex +1; i < endPlaceIndex; i++)
+                {
+                    place += ouput[i];
+                }
+
+                Console.WriteLine($"Found {nameTresure} at {place}");
+                sb.Clear();
+                input = Console.ReadLine();
+            }
+        }
+    }
+}
